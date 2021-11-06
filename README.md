@@ -1,10 +1,7 @@
-# fwb24dantla
+# db24dantla
+
 sateesh dantla
-[Heroku link](https://fwb24dantla.herokuapp.com/)
 
-Class nuts
+[Heroku link](https://db24dantla.herokuapp.com/)
 
-nuts_type(string)
-Weight(number)
-Cost(number)
 
