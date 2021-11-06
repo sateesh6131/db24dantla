@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  - let image_names = ['nut1.jpg','nut2.jfif','nut3.jfif','nut4.jfif','nut5.jfif']
+  - for(let i=0;i<3;i++){
+      - let rno = Math.floor(Math.random()*5)
+      - let iname = image_names[rno]
+
+      img(src=`images/${iname}` alt='nuts' style='width:300px; height:300px;')
+      |    
+  - }
