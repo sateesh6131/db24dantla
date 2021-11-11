@@ -17,4 +17,4 @@ cost: {
     max:500
 }
 })
-module.exports = mongoose.model("nuts",appleSchema)
+module.exports = mongoose.model("nuts",nutsSchema)
