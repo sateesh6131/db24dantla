@@ -49,10 +49,10 @@ nuts({nuts_type:"Ground Nuts",  Weight:20,
 cost:300}); 
 let instance2 = new 
 nuts({nuts_type:"pistha",  Weight:10, 
-cost:700});
+cost:400});
 let instance3 = new 
 nuts({nuts_type:"badam",  Weight:25, 
-cost:600});
+cost:200});
   instance1.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("First object saved") 
