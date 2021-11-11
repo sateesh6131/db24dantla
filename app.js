@@ -4,12 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const connectionString =  
+process.env.MONGO_CON 
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString,  
+{useNewUrlParser: true, 
+useUnifiedTopology: true}); 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var nutsRouter = require('./routes/nuts');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
-
+var resourceRouter = require('./routes/resource');
+var nuts = require('./models/nuts');
 
 
 var app = express();
@@ -24,11 +32,51 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Get the default connection 
+var db = mongoose.connection; 
+ 
+//Bind connection to error event  
+db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
+db.once("open", function(){ 
+ console.log("Connection to DB succeeded")}); 
+ // We can seed the collection if needed on server start 
+async function recreateDB(){ 
+  // Delete everything 
+  await nuts.deleteMany(); 
+ 
+  let instance1 = new 
+nuts({nuts_type:"Ground Nuts",  Weight:20, 
+cost:300}); 
+let instance2 = new 
+nuts({nuts_type:"pistha",  Weight:10, 
+cost:700});
+let instance3 = new 
+nuts({nuts_type:"badam",  Weight:25, 
+cost:600});
+  instance1.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("First object saved") 
+  }); 
+  instance2.save( function(err,doc) { 
+    if(err) return console.error(err); 
+    console.log("First object saved") 
+}); 
+instance3.save( function(err,doc) { 
+  if(err) return console.error(err); 
+  console.log("First object saved") 
+}); 
+} 
+ 
+let reseed = true; 
+if (reseed) { recreateDB();} 
+ 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/nuts', nutsRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 
 
 // catch 404 and forward to error handler

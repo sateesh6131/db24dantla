@@ -1,9 +1,7 @@
-var express = require("express");
-var router = express.Router();
-
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("nuts", { title: "Search Results nuts" });
-});
-
-module.exports = router;
+var express = require('express'); 
+const nuts_controlers= require('../controllers/nuts'); 
+var router = express.Router(); 
+ 
+/* GET nutss */ 
+router.get('/', nuts_controlers.nuts_view_all_Page ); 
+module.exports = router; 
