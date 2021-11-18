@@ -1,0 +1,24 @@
+extends layout 
+block content
+  h1(class="Title")= title
+  
+   if (toShow == null)
+    h2 No instance to Update
+   else
+    - let nutsid = toShow._id   
+    - let nuts_type = toShow.nuts_type
+    - let Weight = toShow.Weight 
+    - let Cost = toShow.Cost
+    div
+      div.row
+        div(class='nutsAttr mr-3') nuts ID is:
+        div #{nutsid}
+      div.row
+        div(class='nutsAttr mr-3') nuts nutsType is:
+        div #{nuts_type}
+      div.row
+        div(class='nutsAttr mr-3') nuts weight is:
+        div #{Weight}
+      div.row
+        div(class='nutsAttr mr-3') nuts Cost is:
+        div #{Cost}
