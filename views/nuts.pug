@@ -2,13 +2,19 @@ extends layout
 
 block content
   h1= title
-  - const nuts   = ['nuts_type','Weight','Cost']
-  - let results;
+  - let nuts = results;
   script.
     function buy(x){
       alert('Purchased Item: ' + x)
    } 
   div(class='container-fluid')
-    div(class='row')
-      each results, index in nuts  
-        div(class='col-sm-2' onclick='buy('+index+')') #{results} 
+    div(class='row m-1')
+      each m, index in nuts 
+       - let destination = `dispatch(\"/nuts/update?id=${m._id}\")`
+       div(class="row-sm-2", class="m-1") Item #{m.nuts_type}(#{m.Weight}) is #{m.Cost}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    }
