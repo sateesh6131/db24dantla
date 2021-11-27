@@ -19,11 +19,11 @@ const secured = (req, res, next) => {
     res.redirect("/login");
     }
 /* GET create nuts page */ 
-router.get('/create', nuts_controlers.nuts_create_Page); 
+router.get('/create',secured, nuts_controlers.nuts_create_Page); 
 /* GET create update page */ 
 router.get('/update',secured, nuts_controlers.nuts_update_Page); 
 /* GET create nuts page */ 
-router.get('/delete', nuts_controlers.nuts_delete_Page); 
+router.get('/delete',secured, nuts_controlers.nuts_delete_Page); 
 module.exports = router; 
  
  

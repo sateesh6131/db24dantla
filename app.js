@@ -67,13 +67,13 @@ async function recreateDB(){
   await nuts.deleteMany(); 
   let instance1 = new 
 nuts({nuts_type:"Ground Nuts",  Weight:20, 
-cost:300}); 
+Cost:300}); 
 let instance2 = new 
 nuts({nuts_type:"pistha",  Weight:10, 
-cost:400});
+Cost:400});
 let instance3 = new 
 nuts({nuts_type:"badam",  Weight:25, 
-cost:200});
+Cost:200});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("First object saved")
